@@ -31,7 +31,7 @@ public class CacheInterceptor implements HandlerInterceptor {
 	      	String uri = request.getRequestURI();
 	      	
 	      	Users user=(Users)request.getSession().getAttribute("user");
-	        if ("/system/toLogin.action".equals(uri)||"/system/Login.action".equals(uri)||"/system/findAllBlog.action".equals(uri)) {
+	        if ("/system/toLogin.action".equals(uri)||"/system/Login.action".equals(uri)||"/system/findAllBlog.action".equals(uri)||"/system/findBlog.action".equals(uri)) {
 	            // 如果是去登录，就放行
 	            return true;
 	        }else {
