@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.mapper.BlogMapper">
+	<resultMap type="Blog" id="blogMap">
+		<id column="blogId" property="blogId"/>
+		<result column="title" property="title"/>
+		<result column="subTitle" property="subTitle"/>
+		<result column="text" property="text"/>
+		<result column="imageUrl" property="imageUrl"/>
+		<result column="imageUrlCopy" property="imageUrlCopy"/>
+		<result column="userId" property="userId"/>
+		<result column="createDate" property="createDate" jdbcType="DATE"/>
+	</resultMap>
+	<insert id="insertBlog" parameterType="blog">
+			insert into blog(Title,subTitle,text,imageUrl,imageUrlCopy,userId,createDate)
+			value(#{title},#{subTitle},#{text},#{imageUrl},#{imageUrlCopy},#{userId},#{createDate})
+	</insert>
+	
+	<select id="selectBlog" resultMap="blogMap" parameterType="blog">
+			select * 
+			from blog 
+			<if test="userId != null">
+			where userId=#{userId} 
+			</if>
+			order by createDate desc
+	</select>
+	<select id="findBlogById" parameterType="blog" resultType="blog">
+			select * 
+			from blog where 
+			blogId=#{blogId}
+	</select>
+	<update id="updateBlog" parameterType="blog">
+			update blog set title=#{title},subTitle=#{subTitle},text=#{text},imageUrl=#{imageUrl} where blogId=#{blogId}
+	</update>
+</mapper>

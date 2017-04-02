@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="logImpl" value="LOG4J"/>
+	</settings>
+	<typeAliases>
+		<typeAlias type="com.blog.domain.Blog" alias="blog"/>
+		<typeAlias type="com.blog.domain.Users" alias="users"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="com/blog/mapper/BlogMapper.xml"/>
+		<mapper resource="com/blog/mapper/UsersMapper.xml"/>
+	</mappers>
+</configuration>
